@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:AgentAssignment"
         mc:Ignorable="d"
         Title="MainWindow" Height="342.439" Width="499.268">
+    <Window.Resources>
+        <local:Agents x:Key="agents" />
+    </Window.Resources>
     <Grid ShowGridLines="True" DataContext="{StaticResource agents}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>

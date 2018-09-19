@@ -9,13 +9,13 @@ namespace AgentAssignment
 {
     public class Agents : ObservableCollection<Agent> {
 
-        Agents()
+        public Agents()
         {
             Add(new Agent("007", "James Bond", "Assassination", "UpperVolta"));
             Add(new Agent("006", "Bames Jond", "Baker", "Ukraine"));
         }
 
-    };  // Just to reference it from xaml
+    }  // Just to reference it from xaml
 
     [Serializable]
     public class Agent
