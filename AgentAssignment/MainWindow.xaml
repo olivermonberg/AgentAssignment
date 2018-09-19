@@ -6,14 +6,31 @@
         xmlns:local="clr-namespace:AgentAssignment"
         mc:Ignorable="d"
         Title="MainWindow" Height="342.439" Width="499.268">
+
+    
+    
+
     <Window.Resources>
         <local:Agents x:Key="agents" />
     </Window.Resources>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Name="Menu">
+            <MenuItem Header="_File">
+                <MenuItem Header="Close" Click="Close_Click" />
+            </MenuItem>
+            <MenuItem Header="_Agents">
+                <MenuItem Header="Up" Click="Up_Click" />
+                <MenuItem Header="Down" Click="Down_Click" />
+                <MenuItem Header="Add" Click="Add_Click" />
+            </MenuItem>
+        </Menu>
+
     <Grid ShowGridLines="True" DataContext="{StaticResource agents}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" ShowGridLines="True">
@@ -54,7 +71,18 @@
             <TextBox Name="TextBoxCodeName" Grid.Row="1" Text="{Binding Path = CodeName}"></TextBox>
             <TextBox Name="TextBoxSpeciality" Grid.Row="2" Text="{Binding Path = Speciality}"></TextBox>
             <TextBox x:Name="TextBoxAssignment" Grid.Row="3" MinHeight="100" Text="{Binding Path = Assignment}"></TextBox>
+            
             <Button x:Name="AddNew" Grid.Row="5" Margin="5" MinHeight="20" Click="AddNew_Click" Content="Add new"></Button>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="LeftBttn" Grid.Column="0" Margin="5" MinHeight="20" Content="&lt;" Click="LeftBttn_Click"></Button>
+                <Button x:Name="RightBttn" Grid.Column="1" Margin="5" MinHeight="20" Content="&gt;" Click="RightBttn_Click"></Button>
+            </Grid>
+            
         </Grid>
 
         <Grid Grid.Column="2" ShowGridLines="True">
@@ -64,7 +92,7 @@
             </Style>
             </Grid.Resources>
 
-            <ListBox Name="ListBoxAgents" ItemsSource="{Binding}" DisplayMemberPath="CodeName" IsSynchronizedWithCurrentItem="True" Loaded="ListBoxAgents_Loaded" MinWidth="200" SelectionChanged="ListBoxAgents_SelectionChanged"></ListBox>
+            <ListBox Name="ListBoxAgents" ItemsSource="{Binding}" DisplayMemberPath="CodeName" IsSynchronizedWithCurrentItem="True" Loaded="ListBoxAgents_Loaded"  SelectionChanged="ListBoxAgents_SelectionChanged"></ListBox>
             
             <!--<Grid.Resources>
                 <Style TargetType="{x:Type TextBlock}">
@@ -85,4 +113,6 @@
         </Grid>
 
     </Grid>
+    </DockPanel>
+
 </Window>
