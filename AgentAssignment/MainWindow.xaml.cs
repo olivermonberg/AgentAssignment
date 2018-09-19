@@ -66,29 +66,5 @@ namespace AgentAssignment
             Close();
         }
 
-        private void Up_Click(object sender, RoutedEventArgs e)
-        {
-            if (ListBoxAgents.SelectedIndex > 0)
-            {
-                --ListBoxAgents.SelectedIndex;
-            }
-        }
-
-        private void Down_Click(object sender, RoutedEventArgs e)
-        {
-            if (ListBoxAgents.SelectedIndex < ListBoxAgents.Items.Count - 1)
-            {
-                ++ListBoxAgents.SelectedIndex;
-            }
-        }
-
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-            Agents agents = (Agents)this.FindResource("agents");
-            agents.Add(new Agent());
-
-            ListBoxAgents.SelectedIndex = ListBoxAgents.Items.Count - 1;
-            ListBoxAgents.Focus();
-        }
     }
 }

@@ -5,14 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgentAssignment"
         mc:Ignorable="d"
-        Title="MainWindow" Height="342.439" Width="499.268">
+        Title="MainWindow" Height="382.439" Width="499.268">
 
-    
-    
 
     <Window.Resources>
         <local:Agents x:Key="agents" />
     </Window.Resources>
+    
+    <Window.DataContext>
+        <local:Agent/>
+    </Window.DataContext>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close"
+                        Executed="Close_Click" 
+                        />
+    </Window.CommandBindings>
 
     <DockPanel>
         <Menu DockPanel.Dock="Top" Name="Menu">
@@ -20,11 +28,18 @@
                 <MenuItem Header="Close" Click="Close_Click" />
             </MenuItem>
             <MenuItem Header="_Agents">
-                <MenuItem Header="Up" Click="Up_Click" />
-                <MenuItem Header="Down" Click="Down_Click" />
-                <MenuItem Header="Add" Click="Add_Click" />
+                <MenuItem Header="Up"  />
+                <MenuItem Header="Down" />
+                <MenuItem Header="Add" Command="{Binding AddCommand}" />
             </MenuItem>
         </Menu>
+
+        <ToolBar DockPanel.Dock="Top" Height="auto" FontWeight="Bold" FontSize="18">
+            <Button x:Name="LeftBttnTool" Margin="5" Content="&lt;"></Button>
+            <Button x:Name="RightBttnTool" Margin="5" Command="{Binding NextCommand}" Content="&gt;"></Button>
+            <Button x:Name="AddBttnTool" Margin="5" Command="{Binding AddCommand}" Content="+"></Button>
+            <Button x:Name="RemoveBttnTool" Margin="5" Content="-"></Button>
+        </ToolBar>
 
     <Grid ShowGridLines="True" DataContext="{StaticResource agents}">
         <Grid.ColumnDefinitions>
